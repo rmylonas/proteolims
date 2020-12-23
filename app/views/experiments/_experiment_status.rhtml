@@ -1,0 +1,16 @@
+
+<div id="experiment-status">
+	<table> 
+		<tr><td><span class="label-td">Bill done</span>
+			<%= check_box_tag 'bill_done' , 'done' , bill_done , { :onchange => '$("status_form").request();' }%>
+		</td></tr>
+		<tr><td><span class="label-td">Experiment type:</span>
+			<%= select_tag('exp_type', options_for_select([['MS Service', 0], ['RPPA-WES Service', 2], ['Internal Experiment', 1]], exp_type), :onchange => '$("status_form").request();' ) %>
+		</td></tr>
+		<tr><td><span class="label-td">Status:</span>
+		<%= select_tag('status', options_for_select([['not started', 0], ['in progress', 1], ['finished', 2]], status), :onchange => '$("status_form").request();' ) %>
+		</td></tr>
+	</table>
+
+	<input name="exp_id" type="hidden" value="<%= exp_id %>" />
+</div>

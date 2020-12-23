@@ -1,0 +1,19 @@
+<tr style="background: #ccc; border-bottom: 1px solid #bbb">
+	<td>&nbsp;</td>
+	<td>&nbsp;</td>
+	<td><%= text_field 'sample', 'tube', {:size => 4} %></td>
+	<td><%= text_field 'sample', 'sample_name', {:size => 10} %></td>
+	<td><%= select("sample", "sample_origin_id", SampleOrigin.find(:all, :order => 'description').collect {|s| [s.organism.species_name, s.id] }, {:include_blank => true}, {:style => "width: 100px"} ) %></td>
+	<td><%= text_field 'sample', 'sample_date', {:size => 10} %></td>
+	<td><%= select("sample", "provider", Person.find( :all, :order => 'last_name').collect { |n| [n.last_name, n.id] }, {:include_blank => true} , {:style => "width: 100px"}) %> </td>
+	<td><%= text_field 'sample', 'description', {:size => 10} %></td>
+	<td><%= text_field 'sample', 'annotation', {:size => 10} %></td>
+	<td><%= select  'sample', 'analysis_type', ['', 'RPPA', 'Protein identification by short LC-MS/MS run', 'Protein identification by nanoLC-MS/MS long run', 'Direct protein identification by nanoLC-MS/MS', 'Direct electrospray analysis', 'Sample preparation (desalting...)', 'Large scale sample preparation, processing and QC', 'PTM identification workflow', 'Shotgun analysis of complex samples', ' Extended shotgun analysis of complex samples', 'SILAC workflow (12 fractions)', 'SILAC check labeling', 'Slice SILAC', 'Multiplex quantitation (ITRAQ)(12fractions)', 'Supplement for high resolution fractionation(24fractions)', 'Gel Analysis', '1D gels + CBB or Silver staining staining (minigels)', '2D gels + CBB or Silver staining (mini or midi gels)', '2D gels + Western transfer (minigels)'], {:include_blank => false} , {:style => "width: 200px"} %></td>
+	<td><%= select 'sample', 'instrument', ['', 'Velos', 'Fusion', 'Q-Ex'] %></td>
+	<td><%= text_field 'sample', 'injection', {:size => 10} %></td>
+	<td><%= text_field 'sample', 'mascot', {:size => 10} %></td>
+	<td colspan="2">
+		<%= submit_tag("Update", :name => "submit", :id => 'update_btn', :disabled => true, :style => "font-size: x-small; background-color: #ddd; border: 1px solid #aaa;") %> <br/>
+		<%= submit_tag("Delete", :name => "submit", :id => 'destroy_multiple_btn', :disabled => true, :style => "font-size: x-small; background-color: #ddd; border: 1px solid #aaa;", :onclick => "return confirm('Are you sure you want to delete the selected samples ?');") %> 
+</tr>
+

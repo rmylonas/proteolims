@@ -1,0 +1,24 @@
+production:
+  adapter: mysql
+  database: prodb_15_production
+  username: root
+  password: 
+  host: localhost
+  socket: /var/lib/mysql/mysql.sock
+
+
+test:
+  adapter: mysql
+  database: prodb_15_test
+  username: limsdev
+  password:
+  host: localhost
+  socket: /var/lib/mysql/mysql.sock
+
+development:
+  adapter: mysql
+  database: prodb_15_development
+  username: limsprod
+  password: 
+  host: localhost
+  socket: /var/lib/mysql/mysql.sock
